@@ -27,7 +27,7 @@ eval:"情報の正確さ30／応対表現25／Word帳票25／確認10／提出10
 learn:["分かりやすい件名","宛名・挨拶・要件・結び・署名","添付ファイルの確認","CC/BCCの基本","Word：案内文・社外文書"],
 phrases:["お世話になっております。","お手数をおかけしますが、ご確認をお願いいたします。","申し訳ございません。"],
 task:"取引先へ「会議日程の変更」をお願いするメール文と、Wordの会議案内文を作成してください。",
-instructions:["メールは件名から署名まで作成","変更前／変更後の日時を明確にする","Word案内文には日時・場所・内容・問い合わせ先を記載","添付する前提でファイル名も適切にする"],
+instructions:["メールは件名から署名まで作成","変更前／変更後の日時を明確にする","Word案内文には日時・場所・内容・問い合わせ先を記載","添付する前提でファイル名も適切にする","ファイル名：学籍番号_氏名_日程変更メール.docx、ファイル名：学籍番号_氏名_案内文.docx"],
 eval:"メール構成25／敬語20／Word文書25／情報の正確さ20／提出10"},
 {n:6,title:"Excelで仕事① 表と基本集計",office:"Excel",goal:"会社の数値データを正確に入力・計算・確認できる。",
 learn:["表の基本構造","数値・日付・通貨表示","SUM・AVERAGE・MAX・MIN","数式を使い手計算を減らす","Excel：セル書式、罫線、列幅"],
@@ -45,7 +45,7 @@ eval:"判定・関数35／抽出20／正確さ20／データ管理15／提出10"
 learn:["目的に合うグラフ","比較と推移の違い","数字→事実→考察","グラフのタイトル・単位"],
 phrases:["グラフから○○が分かります。","前月と比較して○％増加しました。","原因として○○が考えられます。"],
 task:"3か月分の売上データを集計し、グラフを作り、「分かったこと」を3点書いてください。",
-instructions:["商品別または月別に集計","目的に合うグラフを1つ以上作成","タイトル・凡例・単位を確認","事実と自分の考えを区別して記載"],
+instructions:["商品別または月別に集計","目的に合うグラフを1つ以上作成","タイトル・凡例・単位を確認","事実と自分の考えを区別して記載","ファイル名：学籍番号_氏名_売上分析.xlsx"],
 eval:"集計25／グラフ25／読み取り25／説明15／提出10"},
 {n:9,title:"会議・打ち合わせ・議事録",office:"Word＋Excel",goal:"会議でメモを取り、決定事項と担当・期限を整理した議事録を作れる。",
 learn:["発言・質問のタイミング","賛成・反対・確認の表現","決定事項と意見を区別","議事録：日時、参加者、議題、決定事項、ToDo"],
@@ -111,6 +111,20 @@ const v3Steps={"1": ["練習ファイルを開き、［ファイル］→［名�
 const sampleFiles={
 1:[["samples/01_profile.docx","Word練習ファイル"]],2:[["samples/02_work_instruction.docx","業務指示書"]],3:[["samples/03_horenso_case.docx","報連相ケース"],["completed/completed_03_report.docx","完成例Word"]],4:[["samples/04_phone_case.docx","電話応対ケース"]],5:[["samples/05_email_task.docx","メール作成課題"]],6:[["samples/06_sales_basic.xlsx","売上基本データ"]],7:[["samples/07_sales_performance.xlsx","営業実績データ"]],8:[["samples/08_monthly_sales.xlsx","月別売上データ"]],9:[["samples/09_meeting_data.xlsx","会議資料Excel"],["samples/09_minutes_task.docx","議事録課題"],["completed/completed_09_minutes.docx","完成例Word"]],10:[["samples/10_report_sales.xlsx","報告用Excel"],["samples/10_report_template.pptx","PPTテンプレート"],["completed/completed_10_sales_report.pptx","完成例PPT"]],11:[["samples/11_integrated_data.xlsx","総合演習Excel"],["samples/11_integrated_instruction.docx","業務指示書"],["samples/11_integrated_template.pptx","PPTテンプレート"]],12:[["samples/12_exam_data.xlsx","試験Excel"],["samples/12_exam_instruction.docx","試験指示書"],["samples/12_exam_template.pptx","PPTテンプレート"]]};
 const examples={1:"見出しを使って、読む人が短時間で人物像をつかめるようにします。",2:"指示が曖昧な場合は、期限・形式・提出先を確認してから始めます。",3:"『間に合いません』だけで終わらず、状況・原因・対応案まで報告します。",4:"電話では『誰から・誰へ・いつ・何の用件・折返し』を正確に残します。",5:"件名だけで用件が分かり、変更前後の情報がすぐ見つかる文面にします。",6:"手計算ではなく関数を使い、元データが変わっても結果が更新される表にします。",7:"目視だけで探さず、IF・COUNTIF・フィルターを使って条件を明確にします。",8:"『増えた・減った』だけでなく、具体的な数字を根拠に説明します。",9:"議事録は会話の全文ではなく、決定事項と次にする仕事を残します。",10:"発表は行いません。上司が資料だけを見て結論と根拠を理解できる構成にします。",11:"3種類の成果物の数字や結論が食い違わないよう、最後に必ず照合します。",12:"試験ではOffice操作だけでなく、指示理解・確認・正確さ・提出ルールも評価します。"};
+function slideDeck(slides){
+ return '<div class="deck" data-i="0">'
+  + slides.map((s,i)=>'<div class="mockslide deckSlide"'+(i?' hidden':'')+'>'+s+'</div>').join('')
+  + '<div class="deckNav"><button type="button" onclick="moveDeck(this,-1)">◀ 前へ</button>'
+  + '<span class="deckCount">1 / '+slides.length+'</span>'
+  + '<button type="button" onclick="moveDeck(this,1)">次へ ▶</button></div></div>';
+}
+function moveDeck(btn,d){
+ const deck=btn.closest('.deck'), sl=deck.querySelectorAll('.deckSlide');
+ const i=Math.max(0,Math.min(sl.length-1,Number(deck.dataset.i)+d));
+ deck.dataset.i=i;
+ sl.forEach((e,k)=>{e.hidden=(k!==i);});
+ deck.querySelector('.deckCount').textContent=(i+1)+' / '+sl.length;
+}
 function completeView(n){
  const views={
  1:'<div class="mockdoc"><h4>自己紹介</h4><p><b>■ 氏名</b></p><p>山田　太郎（やまだ　たろう）</p><p><b>■ 出身</b></p><p>千葉県松戸市</p><p><b>■ 学んでいること</b></p><ul><li>Word・Excel・PowerPointなどのOfficeソフトの基本操作</li><li>ビジネスマナー（挨拶、電話応対、メールの書き方）</li><li>プログラミングの基礎（Pythonを学習中）</li></ul><p><b>■ 得意なこと</b></p><ul><li>人の話を最後まで丁寧に聞くこと</li><li>コツコツと継続して取り組むこと</li><li>資料を見やすく整理してまとめること</li></ul><p><b>■ 仕事で頑張りたいこと</b></p><ul><li>一日も早く仕事を覚え、チームの力になれるよう努力します</li><li>報告・連絡・相談を徹底し、信頼される社員を目指します</li><li>積極的に質問し、新しい知識やスキルを身につけます</li></ul></div>',
@@ -123,8 +137,20 @@ function completeView(n){
  8:'<div class="mockdoc"><h4>売上分析（単位：万円）</h4><table class="mocktable"><tr><th>商品</th><th>4月</th><th>5月</th><th>6月</th><th>合計</th></tr><tr><td>商品A</td><td>120</td><td>135</td><td>145</td><td>400</td></tr><tr><td>商品B</td><td>160</td><td>145</td><td>110</td><td>415</td></tr><tr><td>商品C</td><td>90</td><td>105</td><td>130</td><td>325</td></tr><tr><td>商品D</td><td>75</td><td>82</td><td>88</td><td>245</td></tr></table><p><b>グラフ：</b>商品別の月別推移（折れ線）／商品別3か月合計（棒）</p><p><b>事実①：</b>商品Bは 160 → 145 → 110 と減少（4月比 -31.3%）。4商品で唯一の減少。</p><p><b>事実②：</b>商品Cは 90 → 105 → 130 と増加（+44.4%）。6月は商品Bを上回った。</p><p><b>事実③：</b>月別合計は 445 → 467 → 473 と増加。</p><p><b>考察：</b>商品Bの販売方法や顧客ニーズを確認する必要があります。</p></div>',
  9:'<div class="mockdoc"><h4>会議議事録</h4><p><b>会議名：</b>秋の広報企画会議</p><p><b>日時：</b>9月20日 15:15～16:00</p><p><b>場所：</b>第3会議室</p><p><b>参加者：</b>リー、グエン、チャン／記録：山田 太郎</p><p><b>議題：</b>秋の広報企画の実施施策</p><p><b>主な意見：</b></p><ul><li>SNS広告：予算120,000円。若年層への認知向上</li><li>チラシ：予算80,000円。地域顧客への周知</li><li>Web広告：予算150,000円。検索流入増加</li></ul><p><b style="color:#C00000;">決定：SNS広告を中心に実施。</b></p><p><b>ToDo：</b></p><table class="mocktable"><tr><th>誰が（担当者）</th><th>何を（作業内容）</th><th>いつまで（期限）</th></tr><tr><td>リー</td><td>広告案を作成する</td><td><b style="color:#C00000;background:#FFF200;">10月3日まで</b></td></tr></table></div>',
  10:'<div class="mockslide"><h4>4～6月 売上報告</h4><h3>結論：商品Bの売上が継続的に低下</h3><p>商品B：4月 400,000円 → 6月 275,000円（-31.3%）</p><p>商品C：4月 220,000円 → 6月 310,000円（+40.9%）</p><p>6月は商品Bが3商品で最も低い。</p><p>改善案：商品Bの販売状況・顧客層・販促方法を確認する。</p></div>',
- 11:'<div class="mockdoc"><h4>総合演習の完成形</h4><p>① Excel：集計・グラフ（6月達成率：A 105.9%／B 76.3%／C 107.1%）</p><p>② Word：結論・根拠・問題点・改善案（A4 1ページ）</p><p>③ PowerPoint：5枚の提出用報告資料</p><p><b>結論：</b>商品Bが6月の目標を90,000円下回り、全体も目標の95.0%。</p><p><b>重要：</b>3つの資料の数字と結論を一致させる。</p></div>',
- 12:'<div class="mockdoc"><h4>総合実技試験</h4><p>指示確認 → Excel分析 → Word報告 → PowerPoint報告資料 → 最終確認 → 提出</p><p>発表は行いません。成果物だけで内容が伝わることも評価します。</p></div>'}; return views[n];
+ 11:slideDeck([
+ '<h4>総合演習 報告資料</h4><h3>4～6月 商品別売上の分析</h3><p>提出用資料　報告者：山田 太郎</p>',
+ '<h4>結論</h4><h3>商品Bが6月の目標を大きく下回り、全体も目標に届いていない</h3><p>商品B　6月達成率 <b style="color:#C00000;">76.3%</b>（290,000円／目標380,000円）</p><p>全体　6月達成率 95.0%（950,000円／目標1,000,000円）</p><p>商品A 105.9%・商品C 107.1%は達成</p>',
+ '<h4>売上分析（単位：円）</h4><table class="mocktable"><tr><th>商品</th><th>4月</th><th>5月</th><th>6月</th><th>目標</th><th>6月達成率</th></tr><tr><td>商品A</td><td>300,000</td><td>330,000</td><td>360,000</td><td>340,000</td><td>105.9%</td></tr><tr><td>商品B</td><td>420,000</td><td>350,000</td><td>290,000</td><td>380,000</td><td style="color:#C00000;font-weight:bold;">76.3%</td></tr><tr><td>商品C</td><td>210,000</td><td>250,000</td><td>300,000</td><td>280,000</td><td>107.1%</td></tr><tr><th>合計</th><td>930,000</td><td>930,000</td><td>950,000</td><td>1,000,000</td><td>95.0%</td></tr></table><p>商品B：420,000 → 350,000 → 290,000円（-31.0%）</p>',
+ '<h4>問題点</h4><p>① 商品Bの売上が減り続けている（4月から-130,000円）</p><p>② 商品Bだけが6月の目標に届いていない（90,000円不足）</p><p>③ 全体も目標に届いていない（50,000円不足）</p>',
+ '<h4>改善案</h4><p>① 商品Bの販売状況・顧客層・販促方法を確認する</p><p>② 商品A・Cの好調要因を整理し、商品Bの販促に活かす</p><p>③ 7月以降も月別に目標との差を確認する</p>'
+ ]),
+ 12:slideDeck([
+ '<h4>総合実技試験 報告資料</h4><h3>7～9月 部門別売上の分析</h3><p>提出用資料　報告者：山田 太郎</p>',
+ '<h4>結論</h4><h3>営業Bが9月の目標を下回り、全体も目標に届いていない</h3><p>営業B　9月達成率 <b style="color:#C00000;">86.0%</b>（430,000円／目標500,000円）</p><p>全体　9月達成率 98.5%（1,990,000円／目標2,020,000円）</p><p>営業A 101.8%・C 104.4%・D 101.9%は達成</p>',
+ '<h4>分析結果（単位：円）</h4><table class="mocktable"><tr><th>部門</th><th>7月</th><th>8月</th><th>9月</th><th>目標</th><th>9月達成率</th></tr><tr><td>営業A</td><td>510,000</td><td>540,000</td><td>560,000</td><td>550,000</td><td>101.8%</td></tr><tr><td>営業B</td><td>480,000</td><td>450,000</td><td>430,000</td><td>500,000</td><td style="color:#C00000;font-weight:bold;">86.0%</td></tr><tr><td>営業C</td><td>390,000</td><td>420,000</td><td>470,000</td><td>450,000</td><td>104.4%</td></tr><tr><td>営業D</td><td>520,000</td><td>500,000</td><td>530,000</td><td>520,000</td><td>101.9%</td></tr><tr><th>合計</th><td>1,900,000</td><td>1,910,000</td><td>1,990,000</td><td>2,020,000</td><td>98.5%</td></tr></table><p>営業B：480,000 → 450,000 → 430,000円（-10.4%）</p>',
+ '<h4>問題点</h4><p>① 営業Bの売上が減り続けている（7月から-50,000円）</p><p>② 営業Bだけが9月の目標に届いていない（70,000円不足）</p><p>③ 全体も目標に届いていない（30,000円不足）</p>',
+ '<h4>改善案</h4><p>① 営業Bの案件数・顧客対応・営業方法を確認する</p><p>② 営業Cの伸びた要因を整理し、他部門にも共有する</p><p>③ 10月以降も月別に目標との差を確認する</p>'
+ ])}; return views[n];
 }
 const baseShowLesson=showLesson;
 showLesson=function(n){baseShowLesson(n); const actions=document.querySelector('.actions'); const wrap=document.createElement('div');
