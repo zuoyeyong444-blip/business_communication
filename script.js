@@ -137,6 +137,9 @@ function moveTab(btn,i){
  root.querySelectorAll(':scope > .tabBar > .tabBtn').forEach((b,k)=>{b.style.background=(k===i?'#245b9e':'#e8eef6');b.style.color=(k===i?'#fff':'#243044');});
  root.querySelectorAll(':scope > .tabPane').forEach((p,k)=>{p.hidden=(k!==i);});
 }
+function exampleImg(src,alt){
+ return '<figure style="margin:12px 0;padding:8px;border:2px dashed #e3b93f;border-radius:8px;background:#fffdf3;"><img src="'+src+'" alt="'+alt+'" style="max-width:100%;display:block;margin:auto;"><figcaption style="font-size:13px;color:#8a6d00;text-align:center;margin-top:6px;">※これは例示です。数字・名称は課題とは異なります。</figcaption></figure>';
+}
 function ft(t){
  return '<span style="display:inline-block;min-width:4em;height:1.1em;vertical-align:middle;background:#243044;border-radius:3px;"></span>';
 }
@@ -149,16 +152,16 @@ function completeView(n){
  5:'<div class="mockdoc"><h4>メール完成イメージ</h4><p><b>件名：</b>10月14日打合せ 日程変更のお願い</p><p>北斗工業株式会社 総務部 田島様</p><p>お世話になっております。みらい商事の小林です。10月14日10時にお約束しておりました打合せについて、日程の変更をお願いしたくご連絡いたしました。</p><ul><li><b>変更前：</b>10月14日 10:00</li><li><b>変更後：</b><b style="color:#C00000;background:#FFF200;">10月15日 15:00</b></li><li><b>場所：</b>本社3階 応接室</li></ul><p>こちらの都合によるご変更となり、誠に申し訳ございません。ご確認のうえ、ご返信いただけますと幸いです。何卒よろしくお願い申し上げます。</p><p>みらい商事株式会社 営業部<br>小林 健<br>電話：03-5555-0000<br>メール：kobayashi@example.co.jp</p><hr><h4>打合せ案内文</h4><table class="mocktable"><tr><th>日時</th><td><b>10月15日 15:00～</b>（変更前：10月14日 10:00）</td></tr><tr><th>場所</th><td>本社3階 応接室</td></tr><tr><th>内容</th><td>新商品のご紹介（内容に変更なし）</td></tr><tr><th>問い合わせ先</th><td>小林 健（03-5555-0000／kobayashi@example.co.jp）</td></tr></table></div>',
  6:'<div class="mockdoc"><h4>店舗別売上集計表（単位：円）</h4><table class="mocktable"><tr><th>店舗</th><th>1月</th><th>2月</th><th>3月</th><th>合計</th><th>平均</th><th>最大</th><th>最小</th></tr><tr><td>大阪店</td><td>520,000</td><td>540,000</td><td>510,000</td><td>1,570,000</td><td>523,333</td><td>540,000</td><td>510,000</td></tr><tr><td>京都店</td><td>310,000</td><td>330,000</td><td>360,000</td><td>1,000,000</td><td>333,333</td><td>360,000</td><td>310,000</td></tr><tr><td>神戸店</td><td>280,000</td><td>260,000</td><td>300,000</td><td>840,000</td><td>280,000</td><td>300,000</td><td>260,000</td></tr><tr><td>奈良店</td><td>190,000</td><td>210,000</td><td>200,000</td><td>600,000</td><td>200,000</td><td>210,000</td><td>190,000</td></tr><tr><th>合計</th><td>1,300,000</td><td>1,340,000</td><td>1,370,000</td><td>4,010,000</td><td></td><td></td><td></td></tr><tr><th>平均</th><td>325,000</td><td>335,000</td><td>342,500</td><td>1,002,500</td><td></td><td></td><td></td></tr><tr><th>最大</th><td>520,000</td><td>540,000</td><td>510,000</td><td>1,570,000</td><td></td><td></td><td></td></tr><tr><th>最小</th><td>190,000</td><td>210,000</td><td>200,000</td><td>600,000</td><td></td><td></td><td></td></tr></table><p>合計は =SUM、平均は =AVERAGE、最大は =MAX、最小は =MIN の関数で求めます。</p></div>',
  7:'<div class="mockdoc"><h4>実績管理表</h4><p><b>未達件数：</b><span style="color:#C00000;font-weight:bold;">2件</span>（=COUNTIF(D7:D12,"未達")）</p><table class="mocktable"><tr><th>担当者</th><th>実績</th><th>目標</th><th>判定</th></tr><tr><td>高橋</td><td>18</td><td>15</td><td>達成</td></tr><tr><td>伊藤</td><td>7</td><td>10</td><td style="color:#C00000;font-weight:bold;">未達</td></tr><tr><td>渡辺</td><td>11</td><td>11</td><td>達成</td></tr><tr><td>中村</td><td>9</td><td>12</td><td style="color:#C00000;font-weight:bold;">未達</td></tr><tr><td>小林</td><td>14</td><td>13</td><td>達成</td></tr><tr><td>加藤</td><td>8</td><td>8</td><td>達成</td></tr></table><p>判定は =IF(実績&gt;=目標,"達成","未達") で求め、フィルターで「未達」だけを表示します。</p></div>',
- 8:'<div class="mockdoc"><h4>売上分析（単位：万円）</h4><table class="mocktable"><tr><th>商品</th><th>1月</th><th>2月</th><th>3月</th><th>合計</th></tr><tr><td>文具</td><td>80</td><td>85</td><td>92</td><td>257</td></tr><tr><td>雑貨</td><td>120</td><td>110</td><td>95</td><td>325</td></tr><tr><td>食品</td><td>50</td><td>65</td><td>88</td><td>203</td></tr><tr><td>衣料</td><td>140</td><td>142</td><td>138</td><td>420</td></tr></table><p><b>グラフ：</b>商品別の月別推移（折れ線）／商品別3か月合計（棒）</p><p><b>事実①：</b>雑貨は 120 → 110 → 95 と減少（1月比 -20.8%）。4商品で唯一の減少。</p><p><b>事実②：</b>食品は 50 → 65 → 88 と増加（+76.0%）。増加率が最も大きい。</p><p><b>事実③：</b>月別合計は 390 → 402 → 413 と増加。</p><p><b>考察：</b>雑貨の陳列方法や顧客ニーズを確認する必要があります。</p></div>',
+ 8:'<div class="mockdoc"><h4>売上分析（単位：万円）</h4><table class="mocktable"><tr><th>商品</th><th>1月</th><th>2月</th><th>3月</th><th>合計</th></tr><tr><td>文具</td><td>80</td><td>85</td><td>92</td><td>257</td></tr><tr><td>雑貨</td><td>120</td><td>110</td><td>95</td><td>325</td></tr><tr><td>食品</td><td>50</td><td>65</td><td>88</td><td>203</td></tr><tr><td>衣料</td><td>140</td><td>142</td><td>138</td><td>420</td></tr></table>'+exampleImg('img/lesson8_chart.png','商品別の月別推移（折れ線）と3か月合計（棒）')+'<p><b>事実①：</b>雑貨は 120 → 110 → 95 と減少（1月比 -20.8%）。4商品で唯一の減少。</p><p><b>事実②：</b>食品は 50 → 65 → 88 と増加（+76.0%）。増加率が最も大きい。</p><p><b>事実③：</b>月別合計は 390 → 402 → 413 と増加。</p><p><b>考察：</b>雑貨の陳列方法や顧客ニーズを確認する必要があります。</p></div>',
  9:'<div class="mockdoc"><h4>会議議事録</h4><p><b>会議名：</b>新入社員研修の改善会議</p><p><b>日時：</b>10月9日 13:30～14:15</p><p><b>場所：</b>第1会議室</p><p><b>参加者：</b>田中、佐々木、森／記録：小林 健</p><p><b>議題：</b>研修方法の見直し（どの方法を中心にするか）</p><p><b>主な意見：</b></p><ul><li>オンライン研修：予算90,000円。移動時間の削減</li><li>集合研修：予算150,000円。受講者どうしの交流の促進</li><li>動画教材：予算60,000円。繰り返し学習ができる</li></ul><p><b style="color:#C00000;">決定：動画教材を中心に導入する。</b></p><p><b>ToDo：</b></p><table class="mocktable"><tr><th>誰が（担当者）</th><th>何を（作業内容）</th><th>いつまで（期限）</th></tr><tr><td>田中</td><td>動画教材の候補を3つ選ぶ</td><td><b style="color:#C00000;background:#FFF200;">10月23日まで</b></td></tr></table></div>',
- 10:'<div class="mockslide"><h4>1～3月 売上報告</h4><h3>結論：雑貨の売上が継続的に低下</h3><p>雑貨：1月 120万円 → 3月 95万円（-20.8%）</p><p>食品：1月 50万円 → 3月 88万円（+76.0%）</p><p>改善案：雑貨の販売状況・顧客層・陳列方法を確認する。</p></div>',
+ 10:'<div class="mockslide"><h4>1～3月 売上報告</h4><h3>結論：雑貨の売上が継続的に低下</h3>'+exampleImg('img/lesson10_chart.png','商品別 月別売上の推移（折れ線）')+'<p>雑貨：1月 120万円 → 3月 95万円（-20.8%）</p><p>食品：1月 50万円 → 3月 88万円（+76.0%）</p><p>改善案：雑貨の販売状況・顧客層・陳列方法を確認する。</p></div>',
  11:tabView([
- ['Excel','<div class="mockdoc"><h4>Excel：支店別売上集計（1～3月）</h4><p style="font-size:13px;">単位：円　目標＝月間目標</p><table class="mocktable" style="font-size:12px;"><tr><th>支店</th><th>1月</th><th>2月</th><th>3月</th><th>目標</th><th>3か月合計</th><th>3月達成率</th><th>判定</th></tr><tr><td>東支店</td><td>260,000</td><td>280,000</td><td>300,000</td><td>290,000</td><td>840,000</td><td>103.4%</td><td>達成</td></tr><tr><td>西支店</td><td>350,000</td><td>300,000</td><td>240,000</td><td>320,000</td><td>890,000</td><td style="color:#C00000;font-weight:bold;">75.0%</td><td style="color:#C00000;font-weight:bold;">未達</td></tr><tr><td>南支店</td><td>180,000</td><td>210,000</td><td>260,000</td><td>250,000</td><td>650,000</td><td>104.0%</td><td>達成</td></tr><tr><th>合計</th><td>790,000</td><td>790,000</td><td>800,000</td><td>860,000</td><td>2,380,000</td><td>93.0%</td><td>未達</td></tr></table><p style="font-size:13px;">関数：=SUM（合計）、=D5/E5（達成率）、=IF（達成／未達）<br>グラフ：折れ線（月別推移）・棒（3月実績と目標）</p></div>'],
+ ['Excel','<div class="mockdoc"><h4>Excel：支店別売上集計（1～3月）</h4><p style="font-size:13px;">単位：円　目標＝月間目標</p><table class="mocktable" style="font-size:12px;"><tr><th>支店</th><th>1月</th><th>2月</th><th>3月</th><th>目標</th><th>3か月合計</th><th>3月達成率</th><th>判定</th></tr><tr><td>東支店</td><td>260,000</td><td>280,000</td><td>300,000</td><td>290,000</td><td>840,000</td><td>103.4%</td><td>達成</td></tr><tr><td>西支店</td><td>350,000</td><td>300,000</td><td>240,000</td><td>320,000</td><td>890,000</td><td style="color:#C00000;font-weight:bold;">75.0%</td><td style="color:#C00000;font-weight:bold;">未達</td></tr><tr><td>南支店</td><td>180,000</td><td>210,000</td><td>260,000</td><td>250,000</td><td>650,000</td><td>104.0%</td><td>達成</td></tr><tr><th>合計</th><td>790,000</td><td>790,000</td><td>800,000</td><td>860,000</td><td>2,380,000</td><td>93.0%</td><td>未達</td></tr></table>'+exampleImg('img/lesson11_excel.png','支店別の月別推移（折れ線）と3月実績・目標の比較（棒）')+'<p style="font-size:13px;">関数：=SUM（合計）、=D5/E5（達成率）、=IF（達成／未達）</p></div>'],
  ['Word','<div class="mockdoc"><h4>売上分析報告書</h4><p style="font-size:13px;text-align:right;">宛先：営業部 上司　報告者：小林 健</p><p><b style="color:#C00000;">結論：西支店が3月の目標を80,000円下回り、全体も目標に60,000円届いていません。</b></p><p><b>■ 根拠となる数値</b></p><table class="mocktable" style="font-size:12px;"><tr><th>支店</th><th>3月実績</th><th>3月目標</th><th>達成率</th><th>1月比</th><th>判定</th></tr><tr><td>東支店</td><td>300,000</td><td>290,000</td><td>103.4%</td><td>+15.4%</td><td>達成</td></tr><tr><td>西支店</td><td>240,000</td><td>320,000</td><td style="color:#C00000;">75.0%</td><td>-31.4%</td><td style="color:#C00000;font-weight:bold;">未達</td></tr><tr><td>南支店</td><td>260,000</td><td>250,000</td><td>104.0%</td><td>+44.4%</td><td>達成</td></tr><tr><th>合計</th><td>800,000</td><td>860,000</td><td>93.0%</td><td>+1.3%</td><td>未達</td></tr></table><p><b>■ 問題点</b></p><ul><li>西支店は1月から3月にかけて減少を続け、3月に未達となった唯一の支店</li><li>西支店の目標との差（-80,000円）が、全体の未達の主な要因</li></ul><p><b>■ 改善案</b></p><ul><li>西支店の来店状況・客層・販促方法を確認する</li><li>東・南支店の好調要因を整理し、西支店にも活かす</li><li>4月以降も月別に目標との差を確認する</li></ul></div>'],
  ['PowerPoint',slideDeck([
  '<h4>総合演習 報告資料</h4><h3>1～3月 支店別売上の分析</h3><p>提出用資料　報告者：小林 健</p>',
  '<h4>結論</h4><h3>西支店が3月の目標を大きく下回り、全体も目標に届いていない</h3><p>西支店　3月達成率 <b style="color:#C00000;">75.0%</b>（240,000円／目標320,000円）</p><p>全体　3月達成率 93.0%（800,000円／目標860,000円）</p><p>東支店 103.4%・南支店 104.0%は達成</p>',
- '<h4>売上分析</h4><p>西支店：350,000 → 300,000 → 240,000円（-31.4%）</p><p>南支店：180,000 → 210,000 → 260,000円（+44.4%）</p><p>東支店：260,000 → 280,000 → 300,000円（+15.4%）</p><p>目標未達は西支店のみ（達成率75.0%）</p>',
+ exampleImg('img/lesson11_ppt.png','売上分析スライド（折れ線グラフと棒グラフ）'),
  '<h4>問題点</h4><p>① 西支店の売上が減り続けている（1月から-110,000円）</p><p>② 西支店だけが3月の目標に届いていない（80,000円不足）</p><p>③ 全体も目標に届いていない（60,000円不足）</p>',
  '<h4>改善案</h4><p>① 西支店の来店状況・客層・販促方法を確認する</p><p>② 東・南支店の好調要因を整理し、西支店にも活かす</p><p>③ 4月以降も月別に目標との差を確認する</p>'
  ])]
@@ -175,10 +178,58 @@ function completeView(n){
  ])]
  ])}; return views[n];
 }
+const stepDetails={
+ 8:{label:'グラフを詳しく',html:[
+ '<h4>A. グラフを作る</h4>',
+ '<ol>',
+ '<li>見出し行を含めて、表の範囲（商品名と4月〜6月）を選択します。折れ線グラフのときは「合計」の列を含めません。</li>',
+ '<li>［挿入］→［グラフ］から、時間の変化は「マーカー付き折れ線」、大きさの比較は「集合縦棒」を選びます。</li>',
+ '<li>線が月ごとではなく、商品ごとになっているか確認します。逆になっていたら、［グラフのデザイン］→［行/列の切り替え］を押します。</li>',
+ '</ol>',
+ '<h4>B. グラフの要素を整える</h4>',
+ '<p>グラフをクリックすると右上に出る［＋］（グラフ要素）で、次の項目を設定します。</p>',
+ '<ul>',
+ '<li><b>グラフタイトル：</b>タイトルをクリックして書き換えます。例：「商品別 月別売上の推移（単位：万円）」</li>',
+ '<li><b>軸ラベル：</b>［軸ラベル］にチェックを入れ、縦軸に「売上（万円）」、横軸に「月」と入力します。</li>',
+ '<li><b>凡例：</b>グラフの下または右に表示します。</li>',
+ '<li><b>データラベル：</b>数値を見せたいときに追加します。線が重なって読みにくいときは、強調したい線だけにします。</li>',
+ '</ul>',
+ '<h4>C. 見た目を調整する</h4>',
+ '<ul>',
+ '<li><b>文字の大きさ：</b>変えたい文字をクリックし、［ホーム］のフォントサイズで変更します。目安は、タイトル14〜16pt、軸と凡例12pt前後です。</li>',
+ '<li><b>線の色・太さ：</b>線を右クリックして［データ系列の書式設定］を開き、［塗りつぶしと線］で色と幅を変えます。強調したい1本だけを太く（4pt前後）、他は細く（2pt前後）します。</li>',
+ '<li><b>縦軸の範囲：</b>縦軸の数字を右クリックして［軸の書式設定］を開き、［軸のオプション］で最小値・最大値・間隔を決めます。最大値は、データの最大値より少し大きくします（例：最大が160なら180）。</li>',
+ '</ul>',
+ '<h4>D. 大きさと位置を整える</h4>',
+ '<ul>',
+ '<li>グラフの枠をドラッグして、表と重ならない位置に動かします。</li>',
+ '<li>枠の角をドラッグして、文字が読める大きさに調整します。</li>',
+ '</ul>',
+ '<h4>E. よくある直し方</h4>',
+ '<div class="bad">タイトルが大きすぎて2行に折れている</div>',
+ '<div class="good">タイトルをクリックし、［ホーム］で14〜16pt程度に小さくする</div>',
+ '<div class="bad">全部の線が同じ太さで、どれを見ればよいか分からない</div>',
+ '<div class="good">注目する線だけを太く・目立つ色にし、他は細くする</div>',
+ '<div class="bad">縦軸の上限が高すぎて、線が下に寄っている</div>',
+ '<div class="good">最大値を、データの最大値より少し大きい値に変える</div>',
+ '<h4>F. 提出前のチェック</h4>',
+ '<ul>',
+ '<li>タイトル・軸ラベル・単位・凡例がそろっている</li>',
+ '<li>グラフの数字が、表の数字と一致している</li>',
+ '<li>色だけでなく、線の太さやラベルでも区別できる</li>',
+ '</ul>',
+ '<div class="tipBox"><b>補足：</b>Macでは［＋］ボタンがありません。［グラフのデザイン］→［グラフ要素を追加］から同じ設定ができます。PowerPointに貼るときは、［貼り付け］の▼で［元の書式を保持しデータを埋め込む］を選ぶと、あとから数値を編集できます。</div>'
+ ].join('')}
+};
+function stepDetail(n){
+ const d=stepDetails[n];
+ if(!d) return '';
+ return '<button type="button" class="toggleBtn" style="margin-top:12px;" onclick="let e=this.nextElementSibling;e.hidden=!e.hidden">'+d.label+'（表示／非表示）</button><div class="exampleBox" hidden>'+d.html+'</div>';
+}
 const baseShowLesson=showLesson;
 showLesson=function(n){baseShowLesson(n); const actions=document.querySelector('.actions'); const wrap=document.createElement('div');
  wrap.innerHTML=`<div class="step"><h3>7. 例題・仕事での考え方</h3><div class="exampleBox">${examples[n]}</div></div>
- <div class="step"><h3>8. 操作手順（この順番で進める）</h3><ol class="operationSteps">${v3Steps[n].map((v,i)=>`<li><span class="stepNo">${i+1}</span><span>${v}</span></li>`).join('')}</ol><div class="tipBox"><b>困ったとき：</b> 分からない操作は勝手に飛ばさず、まず課題の目的を確認し、必要なら教員へ質問してください。</div></div>
+ <div class="step"><h3>8. 操作手順（この順番で進める）</h3><ol class="operationSteps">${v3Steps[n].map((v,i)=>`<li><span class="stepNo">${i+1}</span><span>${v}</span></li>`).join('')}</ol><div class="tipBox"><b>困ったとき：</b> 分からない操作は勝手に飛ばさず、まず課題の目的を確認し、必要なら教員へ質問してください。</div>${stepDetail(n)}</div>
  <div class="step"><h3>9. 練習用ファイル</h3><p>ファイルをダウンロードして、上の操作手順を見ながら実際に作業します。</p><div class="downloadGrid">${sampleFiles[n].map(f=>`<a href="${f[0]}" download>⬇ ${f[1]}</a>`).join('')}</div></div>
  <div class="step"><h3>10. 完成イメージ</h3><p>まず自分で作成してから確認しましょう。完成例は答えを丸暗記するためではなく、レイアウトや情報整理を比較するためのものです。</p><button class="toggleBtn" onclick="let e=this.nextElementSibling;e.hidden=!e.hidden">完成例を見る／隠す</button><div class="completeView" hidden>${completeView(n)}</div></div>`;
  actions.parentNode.insertBefore(wrap,actions);
