@@ -196,14 +196,16 @@ function exampleNotice(n){
 const extraPractice={
  4:{
   title:'追加練習（ケース2）',
-  caseText:'<p><b>会話：</b>株式会社ひまわり食品の小川様から、本日（11月4日）の11:40に、営業部の佐藤さん宛てに電話がありました。佐藤さんは外出中で、15時に戻る予定です。小川様は、注文番号HF-2045の納品について相談したいとのことです。</p><ul><li>11月12日の納品を、11月14日に変更できないか</li><li>数量を500個から300個に減らし、残りの200個は11月20日に納品したい</li><li>納品先を本社から、横浜倉庫（神奈川県横浜市）に変更したい</li></ul><p>小川様は15時から17時まで会議のため、電話に出られません。折返しは17時以降にしてほしく、間に合わない場合はメール（ogawa@himawari-foods.example.co.jp）でも構わないとのことです。電話番号は045-678-9012です。</p><p><b>課題：</b>必要事項を抜き出して電話伝言票を作成してください。あわせて、来客時の案内フレーズを3つ記入してください。</p><p style="font-size:13px;color:#66758a;">※ファイル名の例：学籍番号_氏名_電話伝言票2.docx（提出方法は担当の指示に従ってください）</p>'
+  intro:'第4回の追加の練習問題です。ケース文をダウンロードし、これまでと同じ手順で電話伝言票を作成してください。今回は、内容がやや複雑になっています。',
+  files:[["samples/04_phone_case_2.docx","電話応対ケース（追加練習）"]]
  }
 };
 function extraBlock(n){
  const d=extraPractice[n];
  if(!d) return '';
- return '<div class="step"><h3>11. '+d.title+'</h3><div class="exampleBox">'+d.caseText+'</div></div>';
-}function completeView(n){
+ return '<div class="step"><h3>10. '+d.title+'</h3><p>'+d.intro+'</p><div class="downloadGrid">'+d.files.map(f=>'<a href="'+f[0]+'" download>⬇ '+f[1]+'</a>').join('')+'</div></div>';
+}
+function completeView(n){
  const views={
  1:'<div class="mockdoc"><h4>自己紹介</h4><p><b>■ 氏名</b></p><p>鈴木　さくら（すずき　さくら）</p><p><b>■ 出身</b></p><p>福岡県福岡市</p><p><b>■ 学んでいること</b></p><ul><li>簿記3級の基礎（仕訳と帳簿のつけ方）</li><li>ビジネス文書の書き方（社内文書・お礼状）</li><li>英会話（電話応対の基本表現）</li></ul><p><b>■ 得意なこと</b></p><ul><li>計画を立てて、期限までに進めること</li><li>初対面の人とも笑顔で話すこと</li><li>図や表を使って分かりやすく伝えること</li></ul><p><b>■ 仕事で頑張りたいこと</b></p><ul><li>まず担当業務の流れを正確に覚えます</li><li>分からないことは早めに確認し、ミスを減らします</li><li>お客様に安心してもらえる対応を身につけます</li></ul></div>',
  2:'<div class="mockdoc"><h4>業務指示整理シート</h4><table class="mocktable"><tr><th>目的</th><td>展示会の来場者の声を把握し、今後の企画に活かすため</td></tr><tr><th>作業内容</th><td>来場者アンケートの結果をWordで整理する（回答数・年代・満足度を表にまとめる）</td></tr><tr><th>期限</th><td><b style="color:#C00000;background:#FFF200;">10月8日 12:00</b>　<b style="color:#C00000;">※時刻まで厳守</b></td></tr><tr><th>提出先</th><td>総務部　高橋主任</td></tr><tr><th>確認事項</th><td><b>集計の対象期間が指示書に記載されていない</b><br>→ 全日程分でよいか確認する</td></tr></table><p><b>上司への質問文：</b>確認ですが、指示書に集計の対象期間の記載がありませんでした。展示会の全日程分を対象とする、ということでよろしいでしょうか。</p></div>',
