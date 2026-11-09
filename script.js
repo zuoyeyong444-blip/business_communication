@@ -194,6 +194,14 @@ function exampleNotice(n){
  return '<div style="margin:0 0 10px;padding:8px 12px;border:2px dashed #e3b93f;border-radius:8px;background:#fffdf3;color:#8a6d00;font-size:13px;font-weight:bold;text-align:center;">※これは例示です。氏名・数字・名称は課題とは異なります。内容を写すのではなく、形式やレイアウトの参考にしてください。</div>';
 }
 const extraPractice={
+ 6:{
+  title:'追加練習（ケース2）',
+  intro:'第6回の追加の練習問題です。上司からの依頼を読み、これまでと同じ手順で売上集計表を作成してください。今回は、売上金額の計算と、行・列の両方向の集計が加わります。',
+  files:[["samples/06_sales_basic_2.xlsx","追加練習用Excel"]],
+  html:'<div class="mockdoc" style="max-width:none;margin-bottom:10px;"><h4>商品別売上集計</h4><p><b>場面：</b>営業部の新人であるあなたは、上司から次の依頼を受けました。</p><p>「4～6月の商品別の売上を集計して、明日の朝までに送ってください。金額は見やすくお願いします。」</p><p style="font-size:13px;color:#595959;">※4～6月の数値は販売個数です。単価の単位は円です。</p></div>'
+   +pXl('データ',['商品','4月','5月','6月','単価（円）'],[['ボールペン',1200,1350,1100,150],['ノート',860,920,1040,280],['ファイル',450,400,520,320],['付箋',1500,1420,1610,120],['クリアホルダー',700,760,690,90],['マーカー',380,450,410,210]])
+   +'<div class="mockdoc" style="max-width:none;margin-top:10px;"><p><b>作成指示</b></p><ol><li>商品ごとに、3か月の販売個数の合計・平均・最大・最小を求める（関数を使用）</li><li>6月の売上金額（単価×6月の個数）を求める列を追加する</li><li>6月の売上金額の合計を求める</li><li>月ごとの販売個数の合計を、表の最下行に求める</li><li>金額は桁区切りにし、平均は小数点以下を表示しない設定にする</li><li>見出し行・合計行は、色や太字で区別する</li><li>ファイル名：学籍番号_氏名_売上集計2.xlsx</li></ol></div>'
+ },
  4:{
   title:'追加練習（ケース2）',
   intro:'第4回の追加の練習問題です。下の電話の会話を読み、これまでと同じ手順で電話伝言票を作成してください。今回は、内容がやや複雑になっています。',
@@ -203,7 +211,8 @@ const extraPractice={
 function extraBlock(n){
  const d=extraPractice[n];
  if(!d) return '';
- return '<div class="step"><h3>10. '+d.title+'</h3><p>'+d.intro+'</p>'+practiceWrap(d.html)+'</div>';
+ const dl=(d.files&&d.files.length)?'<div class="downloadGrid">'+d.files.map(f=>'<a href="'+f[0]+'" download>⬇ '+f[1]+'</a>').join('')+'</div>':'';
+ return '<div class="step"><h3>10. '+d.title+'</h3><p>'+d.intro+'</p>'+practiceWrap(d.html)+dl+'</div>';
 }
 function completeView(n){
  const views={
