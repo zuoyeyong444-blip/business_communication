@@ -194,6 +194,11 @@ function exampleNotice(n){
  return '<div style="margin:0 0 10px;padding:8px 12px;border:2px dashed #e3b93f;border-radius:8px;background:#fffdf3;color:#8a6d00;font-size:13px;font-weight:bold;text-align:center;">※これは例示です。氏名・数字・名称は課題とは異なります。内容を写すのではなく、形式やレイアウトの参考にしてください。</div>';
 }
 const extraPractice={
+ 5:{
+  title:'追加練習（ケース2）',
+  intro:'第5回の追加の練習問題です。今回は、お詫びを含む社外メールと、社内向けの連絡文の2つを作成します。社外と社内で、言葉づかいを使い分けましょう。',
+  html:'<div class="mockdoc" style="max-width:none;margin-bottom:10px;"><h4>納期変更のお詫びと社内連絡</h4><p><b>場面：</b>あなたは営業部の新人です。上司の高橋課長から、次の指示を受けました。</p><p>「東山文具さんに注文いただいたノート300冊が、メーカーの出荷が遅れて、10月20日に納品できなくなった。10月24日なら納品できる。まずお詫びのメールを送って、新しい納期で了承をもらってほしい。それから、営業部のみんなにも共有しておいて。」</p><p><b>ケース文</b></p><table class="mocktable" style="margin:10px 0;"><tr><th style="width:7em;background:#edf3fa;">相手</th><td>東山文具株式会社 購買部 森田様</td></tr><tr><th style="width:7em;background:#edf3fa;">注文内容</th><td>ノート300冊（注文番号 HN-3081）</td></tr><tr><th style="width:7em;background:#edf3fa;">変更前</th><td>10月20日 納品</td></tr><tr><th style="width:7em;background:#edf3fa;">変更後</th><td>10月24日 納品</td></tr><tr><th style="width:7em;background:#edf3fa;">納品先</th><td>東山文具 本社 受付（変更なし）</td></tr><tr><th style="width:7em;background:#edf3fa;">理由</th><td>メーカーからの出荷が遅れているため</td></tr><tr><th style="width:7em;background:#edf3fa;">依頼</th><td>新しい納期で問題ないか、10月17日までに返信してほしい</td></tr><tr><th style="width:7em;background:#edf3fa;">CC</th><td>営業部 高橋課長</td></tr><tr><th style="width:7em;background:#edf3fa;">添付</th><td>納品予定表（ファイルの名前は自分で決める）</td></tr></table><p><b>課題</b></p><ol><li>森田様へのお詫びメール文を作成する（件名から署名まで）</li><li>営業部全員への社内連絡文をWordで作成する</li></ol></div><div class="mockdoc" style="max-width:none;"><p><b>作成指示</b></p><ol><li>メール：件名・宛名・挨拶・お詫び・変更内容・お願い・結び・署名の順に書く</li><li>件名だけで、用件（納期変更とお詫び）が分かるようにする</li><li>変更前と変更後の納期を、箇条書きなどで分かりやすく書く</li><li>添付ファイルについて本文で触れ、CCに誰を入れたかが分かるようにする</li><li>社内連絡文：宛先は「営業部各位」とし、変更内容・理由・対応・問い合わせ先を書く</li><li>ファイル名：学籍番号_氏名_納期変更お詫びメール.docx、学籍番号_氏名_社内連絡.docx</li></ol><p style="font-size:13px;color:#8a6d00;background:#fff8df;padding:8px 10px;border-radius:6px;"><b>確認しよう：</b>件名が「お詫び」だけになっていないか／変更前後の日付がケース文と一致しているか／社外向けメールに「高橋課長」と書いていないか（社外の人に対して、自社の上司は敬称をつけずに「高橋」と書きます）／返信期限（10月17日）が見落とされない書き方か／社内連絡文がメールの丸写しになっていないか</p></div>'
+ },
  6:{
   title:'追加練習（ケース2）',
   intro:'第6回の追加の練習問題です。上司からの依頼を読み、これまでと同じ手順で売上集計表を作成してください。今回は、売上金額の計算と、行・列の両方向の集計が加わります。',
